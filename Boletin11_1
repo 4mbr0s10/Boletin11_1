@@ -1,0 +1,52 @@
+package boletin11_1;
+
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author dam1
+ */
+public class Boletin11_1 {
+
+    public static void main(String[] args) {
+
+        int num1 = 0;
+        int numTry = 0;
+        int numResp = 0;
+        String auxNum1 = JOptionPane.showInputDialog(null, "Introduce un número entre 1 y 50: ");
+        num1 = Integer.parseInt(auxNum1);
+        if (num1 < 1 || num1 > 50) {
+            do {
+
+                auxNum1 = JOptionPane.showInputDialog(null, "Introduce un número válido (1-50) : ");
+                num1 = Integer.parseInt(auxNum1);
+            } while (num1 < 1 || num1 > 50);
+        }
+
+        String auxNumTry = JOptionPane.showInputDialog("Introduce el número de intentos disponibles: ");
+        numTry = Integer.parseInt(auxNumTry);
+
+        for (int i = 1; i <= numTry; i++) {
+            String auxResposta = JOptionPane.showInputDialog("Introduce una respuesta: ");
+            numResp = Integer.parseInt(auxResposta);
+            if (numResp == num1) {
+
+                JOptionPane.showMessageDialog(null, "EL NUMERO ES CORRECTO!!!!!!");
+                i = numTry + 1;
+
+            } else if (numResp < num1) {
+
+                JOptionPane.showMessageDialog(null, "Te has quedado corto. Prueba con uno mayor.");
+                JOptionPane.showMessageDialog(null, "Te quedan " + (numTry - i) + " intentos.");
+
+            } else if (numResp > num1) {
+
+                JOptionPane.showMessageDialog(null, "Te has pasado un poco. Prueba con uno menor.");
+                JOptionPane.showMessageDialog(null, "Te quedan " + (numTry - i) + " intentos.");
+
+            }
+
+        }
+    }
+
+}
